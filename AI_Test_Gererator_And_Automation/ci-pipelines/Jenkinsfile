@@ -1,0 +1,106 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Default'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                dir('AI_Test_Gererator_And_Automation/spring-boot-sample-app') {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                dir('AI_Test_Gererator_And_Automation/spring-boot-sample-app') {
+                    sh 'mvn test'
+                }
+            }
+            post {
+                always {
+                    dir('AI_Test_Gererator_And_Automation/spring-boot-sample-app') {
+                        junit 'target/surefire-reports/*.xml'
+                        publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: true,
+                            keepAll: true,
+                            reportDir: 'target/site',
+                            reportFiles: 'surefire-report.html',
+                            reportName: 'Test Report'
+                        ])
+                        publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: true,
+                            keepAll: true,
+                            reportDir: 'target/site/jacoco',
+                            reportFiles: 'index.html',
+                            reportName: 'Code Coverage Report (JaCoCo)'
+                        ])
+                    }
+                }
+            }
+        }
+        
+        stage('Contract Verification') {
+            steps {
+                dir('AI_Test_Gererator_And_Automation/spring-boot-sample-app') {
+                    sh 'mvn verify'
+                }
+            }
+        }
+        
+        stage('Security Scan') {
+            steps {
+                dir('AI_Test_Gererator_And_Automation/spring-boot-sample-app') {
+                    sh 'mvn org.owasp:dependency-check-maven:check'
+                    sh 'mvn org.owasp:dependency-check-maven:aggregate'
+                }
+            }
+            post {
+                always {
+                    dir('AI_Test_Gererator_And_Automation/spring-boot-sample-app') {
+                        publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: true,
+                            keepAll: true,
+                            reportDir: 'target',
+                            reportFiles: 'dependency-check-report.html',
+                            reportName: 'Security Report'
+                        ])
+                    }
+                }
+            }
+        }
+        
+        stage('Package') {
+            steps {
+                dir('AI_Test_Gererator_And_Automation/spring-boot-sample-app') {
+                    sh 'mvn package -DskipTests'
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+} 

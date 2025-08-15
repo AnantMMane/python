@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # Optional: Only use this if you want a separate Jenkins instance for this project
+  # If you already have Jenkins running, you can skip this and use your existing Jenkins
+  jenkins-project:
+    image: jenkins/jenkins:lts-jdk17
+    container_name: jenkins-ai-test-project
+    restart: unless-stopped
+    ports:
+      - "8081:8080"  # Changed from 8080 to 8081 to avoid conflict
+      - "50001:50000"  # Changed from 50000 to 50001 to avoid conflict
+    volumes:
+      - jenkins_project_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    networks:
+      - jenkins-project-network
+    profiles:
+      - optional  # This makes the service optional
+
+volumes:
+  jenkins_project_home:
+    driver: local
+
+networks:
+  jenkins-project-network:
+    driver: bridge 
