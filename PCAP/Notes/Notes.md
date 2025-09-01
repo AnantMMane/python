@@ -155,6 +155,8 @@ snake_case = "preferred"
 # class = "invalid"      # Python keyword
 ```
 
+**See comprehensive examples:** [examples/basics/variables_and_types.py](examples/basics/variables_and_types.py)
+
 #### Assignment Operators:
 ```python
 # Basic assignment
@@ -468,6 +470,8 @@ else:
 print(f"Your grade is: {grade}")
 ```
 
+**See comprehensive examples:** [examples/control_flow/conditionals_and_loops.py](examples/control_flow/conditionals_and_loops.py)
+
 #### Conditional Expression (Ternary Operator):
 ```python
 # Syntax: value_if_true if condition else value_if_false
@@ -504,6 +508,8 @@ while True:
         break
     print(f"You entered: {user_input}")
 ```
+
+**See comprehensive examples:** [examples/control_flow/conditionals_and_loops.py](examples/control_flow/conditionals_and_loops.py)
 
 #### for Loop:
 ```python
@@ -578,6 +584,8 @@ nested = [[1, 2], [3, 4], [5, 6]]
 squares = [x**2 for x in range(5)]  # [0, 1, 4, 9, 16]
 even_squares = [x**2 for x in range(10) if x % 2 == 0]  # [0, 4, 16, 36, 64]
 ```
+
+**See comprehensive examples:** [examples/data_structures/lists_comprehensive.py](examples/data_structures/lists_comprehensive.py)
 
 #### Accessing List Elements:
 ```python
@@ -681,6 +689,8 @@ List comprehensions provide a concise way to create lists based on existing sequ
 [expression for item in iterable]
 [expression for item in iterable if condition]
 ```
+
+**See comprehensive examples:** [examples/data_structures/lists_comprehensive.py](examples/data_structures/lists_comprehensive.py)
 
 **Simple Examples:**
 ```python
@@ -935,6 +945,8 @@ def print_info(name, age):
 
 print_info("Bob", 25)
 ```
+
+**See comprehensive examples:** [examples/functions/function_examples.py](examples/functions/function_examples.py)
 
 #### Parameters and Arguments:
 ```python
@@ -1198,6 +1210,8 @@ print(list(squares_gen))  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 #### Built-in Functions: map() and filter():
 Powerful functions for data processing with functional programming approach.
 
+**See comprehensive examples:** [examples/functions/function_examples.py](examples/functions/function_examples.py)
+
 **map() Function:**
 Applies a function to every item in an iterable.
 
@@ -1396,6 +1410,8 @@ squares_gen = (x**2 for x in numbers if x % 2 == 0)
 
 #### Closures:
 Closures are functions that capture and "close over" variables from their enclosing scope.
+
+**See comprehensive examples:** [examples/functions/function_examples.py](examples/functions/function_examples.py)
 
 ```python
 # Basic closure example
@@ -1651,7 +1667,7 @@ debug_closure(counter)
 ```
 
 ### 4.2 Tuples
-Immutable sequences that can store multiple items. See `examples/data_structures/tuples.py`.
+Immutable sequences that can store multiple items.
 
 **Key operations:**
 - Creation: `tuple()`, `(1, 2, 3)`
@@ -1659,8 +1675,10 @@ Immutable sequences that can store multiple items. See `examples/data_structures
 - Tuple unpacking
 - Methods: `count()`, `index()`
 
+**See comprehensive examples:** [examples/data_structures/lists_comprehensive.py](examples/data_structures/lists_comprehensive.py)
+
 ### 4.3 Dictionaries
-Mutable key-value data structures. See `examples/data_structures/dictionaries.py`.
+Mutable key-value data structures.
 
 **Key operations:**
 - Creation: `{}`, `dict()`
@@ -1668,8 +1686,12 @@ Mutable key-value data structures. See `examples/data_structures/dictionaries.py
 - Methods: `keys()`, `values()`, `items()`
 - Dictionary comprehensions
 
+**See comprehensive examples:** [examples/data_structures/lists_comprehensive.py](examples/data_structures/lists_comprehensive.py)
+
 ### 4.4 Exception Handling
 Robust error handling using try-except blocks for managing runtime errors.
+
+**See comprehensive examples:** [examples/exceptions/exception_handling.py](examples/exceptions/exception_handling.py)
 
 #### Exception Hierarchy:
 All exceptions in Python inherit from BaseException. Understanding the hierarchy helps with proper exception handling.
@@ -2050,6 +2072,8 @@ print(person1.species)      # Homo sapiens
 print(person1.have_birthday())  # Happy birthday! Alice is now 31 years old.
 ```
 
+**See comprehensive examples:** [examples/oop/classes_and_inheritance.py](examples/oop/classes_and_inheritance.py)
+
 #### Instance vs Class Variables:
 ```python
 class BankAccount:
@@ -2340,6 +2364,8 @@ analyze_object([1, 2, 3])
 ### 5.2 Inheritance
 Code reusability through inheritance hierarchies with comprehensive examples.
 
+**See comprehensive examples:** [examples/oop/classes_and_inheritance.py](examples/oop/classes_and_inheritance.py)
+
 #### Single Inheritance:
 ```python
 # Base class (parent/superclass)
@@ -2623,13 +2649,15 @@ Data hiding and access control.
 ## Module 6: Modules and Packages
 
 ### 6.1 Modules
-Reusable Python files containing functions, classes, and variables. See `examples/modules/`.
+Reusable Python files containing functions, classes, and variables.
 
 **Import methods:**
 - `import module`
 - `from module import function`
 - `import module as alias`
 - `from module import *` (not recommended)
+
+**See comprehensive examples:** [examples/modules/modules_and_packages.py](examples/modules/modules_and_packages.py)
 
 #### Module Introspection with dir():
 The `dir()` function returns a list of names in the current local scope or attributes of an object.
@@ -3147,7 +3175,7 @@ elif platform.system() == 'Darwin':
 ## Module 7: String Methods and String Processing
 
 ### 7.1 String Operations
-Comprehensive string manipulation. See `examples/strings/`.
+Comprehensive string manipulation.
 
 **Categories:**
 - Case methods: `upper()`, `lower()`, `title()`
@@ -3155,6 +3183,8 @@ Comprehensive string manipulation. See `examples/strings/`.
 - Split/Join: `split()`, `join()`
 - Formatting: f-strings, `format()`, `%` formatting
 - Validation: `isdigit()`, `isalpha()`, `isalnum()`
+
+**See comprehensive examples:** [examples/strings/string_processing.py](examples/strings/string_processing.py)
 
 #### Character Encoding and ord()/chr() Functions:
 Understanding how characters are represented as numbers.
@@ -3328,6 +3358,8 @@ Advanced text processing techniques.
 
 ### 8.1 File Operations
 Python provides comprehensive file handling capabilities for reading, writing, and manipulating files.
+
+**See comprehensive examples:** [examples/files/file_operations.py](examples/files/file_operations.py)
 
 #### File Opening and Modes:
 ```python
@@ -3784,6 +3816,17 @@ Working with different file formats.
 
 All practical examples are organized in the `examples/` folder:
 
+### Available Example Files:
+
+- **[examples/basics/variables_and_types.py](examples/basics/variables_and_types.py)** - Variables, data types, operators, and type conversion
+- **[examples/control_flow/conditionals_and_loops.py](examples/control_flow/conditionals_and_loops.py)** - if/else statements, loops, and control flow
+- **[examples/data_structures/lists_comprehensive.py](examples/data_structures/lists_comprehensive.py)** - Lists, tuples, dictionaries, and advanced data structures
+- **[examples/functions/function_examples.py](examples/functions/function_examples.py)** - Function definitions, parameters, scope, lambda functions, closures, and functional programming
+- **[examples/oop/classes_and_inheritance.py](examples/oop/classes_and_inheritance.py)** - Classes, objects, inheritance, polymorphism, and OOP concepts
+- **[examples/strings/string_processing.py](examples/strings/string_processing.py)** - String methods, processing, and manipulation
+- **[examples/practice/pcap_practice_problems.py](examples/practice/pcap_practice_problems.py)** - PCAP-style practice problems and exercises
+
+### Directory Structure:
 ```
 examples/
 ├── basics/           # Variables, data types, operators
@@ -3797,6 +3840,8 @@ examples/
 ├── exceptions/      # Error handling examples
 └── practice/        # PCAP-style practice problems
 ```
+
+**Note:** All directories now contain comprehensive example files covering PCAP certification topics.
 
 ---
 
